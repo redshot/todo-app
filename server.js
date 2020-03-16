@@ -11,14 +11,18 @@ mongoose
 .then(() => console.log('MongoDB Connected'))
 .catch((err) =>console.log(err));
 
+const todos = require('./routes/api/todos');
+
 // Port Number
 const port = 3000;
 
-//
 const app = express();
 
 // Body Parser Middleware
 app.use(bodyParser.json());
+
+// Routes
+app.use('/api/todos', todos)
 
 // Start Server
 app.listen(port, () => console.log(`Started server on port ${port}`));
