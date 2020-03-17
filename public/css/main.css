@@ -1,0 +1,72 @@
+body {
+  background: #f8fafc;
+  font-family: Noto Sans,Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  color: #222;
+}
+
+.section-title {
+    font-family: Rubik,Helvetica,Arial,sans-serif;
+    font-size: 40px;
+    font-weight: 500;
+    color: #333;
+}
+
+.todo-form-wrapper {
+    margin: 0 0 30px 0;
+}
+
+#todo-title {
+  background: #fff;
+  font-family: 'Work Sans',Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  color: #222;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0 20px;
+  margin-bottom: 0;
+  height: 54px;
+  line-height: 56px;
+  max-width: 417px;
+}
+
+#todo-title::-webkit-input-placeholder { /* Edge */
+  color: #222;
+  font-size: 16px;
+}
+
+#todo-title:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #222;
+  font-size: 16px;
+}
+
+#todo-title::placeholder {
+  color: #222;
+  font-size: 16px;
+}
+
+#todo-submit {
+  background: #26a69a;
+  font-family: 'Work Sans',Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  line-height: 56px;
+  height: 56px;
+  padding: 0 16px;
+  max-width: 100%;
+  margin-left: 12px;
+  cursor: pointer;
+}
+
+/* Mediq Query */
+@media screen and (max-width: 768px) {
+  #todo-submit {
+    margin: 12px auto 0;
+    display: block;
+    max-width: 459px;
+    width: 100%;
+  }
+}
