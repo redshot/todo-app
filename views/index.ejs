@@ -26,17 +26,8 @@
         </form>
       </div>
 
-      <div class="collection">
-        <div class="collection-item">
-          Prepare Chapter Overview
-        </div>
-        <div class="collection-item">
-          Write First Chapter
-        </div>
-        <div class="collection-item">
-          Create Intro Post
-        </div>
-      </div>
+      <ul id="todos" class="collection">
+      </ul>
     </div>
 
   </div>
@@ -46,8 +37,9 @@
   <script>
     document.addEventListener("DOMContentLoaded", function(){
       // Handler when the DOM is fully loaded
-      let todoForm = document.getElementById("todo-form");
-      let todoSubmit = document.getElementById("todo-submit");
+      const ulTodos = document.getElementById('todos');
+      const todoForm = document.getElementById("todo-form");
+      const todoSubmit = document.getElementById("todo-submit");
       let loader = "<div class='loader'><p></p><p></p><p></p><p></p></div>";
 
       todoSubmit.onclick = (e) => {
@@ -77,9 +69,28 @@
         }
 
       }
-    });
 
+      fetch("api/todos")
+      .then((resp) => resp.json())
+      .then((data) => {
+        let todos = data;
+        return todos.map(todo => {
+          let liTodo = createNode("li");
+          liTodo.innerHTML = todo.title;
+          liTodo.classList.add("collection-item");
+          append(ulTodos, liTodo);
+        });
+      });
 
+      function createNode(element) {
+        return document.createElement(element); // Create the type of element you pass in the parameters
+      }
+
+      function append(parent, el) {
+  	    return parent.appendChild(el); // Append the second parameter(element) to the first one
+  	  }
+
+    }); // end document
   </script>
 </body>
 </html>
