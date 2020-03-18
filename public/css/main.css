@@ -89,6 +89,20 @@ body {
 	100%{transform:translate(19px,0)}
 }
 
+#todos .collection-item {
+  line-height: 2.5rem;
+}
+
+.remove-todo {
+  font-size: 12px;
+  float: right;
+  background: #f44336;
+}
+
+.remove-todo:hover, .remove-todo:focus  {
+  background: #ef5350;
+}
+
 /* Mediq Query */
 @media screen and (max-width: 768px) {
   #todo-submit {

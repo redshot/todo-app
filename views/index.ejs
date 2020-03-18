@@ -21,7 +21,7 @@
       <div class="todo-form-wrapper center-align">
         <form id="todo-form">
           <input id="todo-title" type="text" placeholder="What Needs To Be Done?" required>
-          <button id="todo-submit" type="submit" value="Submit">Add</button>
+          <button id="todo-submit" class="btn" type="submit" value="Submit">Add</button>
           <div style="clear:both;"></div>
         </form>
       </div>
@@ -58,10 +58,17 @@
           })
           .then((resp) => resp.json())
           .then((data) => {
+            // Remove loader
             let setTitleText = document.getElementById("todo-title");
             todoForm.classList.remove("disable");
             todoSubmit.innerHTML = "Add";
             setTitleText.value = "";
+
+            // Update collection
+            let liTodo = createNode("li");
+            liTodo.innerHTML = `${data.title} <button class="btn-small remove-todo">Delete</button>`;
+            liTodo.classList.add("collection-item");
+            prepend(ulTodos, liTodo);
           })
           .catch((error) => {
             console.log(error);
@@ -76,7 +83,7 @@
         let todos = data;
         return todos.map(todo => {
           let liTodo = createNode("li");
-          liTodo.innerHTML = todo.title;
+          liTodo.innerHTML = `${todo.title} <button class="btn-small remove-todo">Delete</button>`;
           liTodo.classList.add("collection-item");
           append(ulTodos, liTodo);
         });
@@ -89,6 +96,10 @@
       function append(parent, el) {
   	    return parent.appendChild(el); // Append the second parameter(element) to the first one
   	  }
+
+      function prepend(parent, el) {
+        return parent.prepend(el); // Insert at the beginning of the parents
+      }
 
     }); // end document
   </script>
