@@ -53,7 +53,8 @@ body {
 }
 
 #todo-submit {
-  background: #26a69a;
+  background: #03a9f4;
+  box-shadow: none;
   font-family: 'Work Sans',Helvetica,Arial,sans-serif;
   font-size: 16px;
   color: #fff;
@@ -99,9 +100,37 @@ body {
   opacity: 0.5;
 }
 
+#todos .collection-item .inner-title {
+  width: 50%;
+  border: none;
+  margin: 0;
+}
+
+#todos .collection-item .inner-title:focus {
+  box-shadow: none;
+}
+
+#todos .collection-item .inner-title.edit {
+  border: 1px solid #e0e0e0;
+}
+
+.inner-buttons {
+  float: right;
+}
+
+.update-todo {
+  font-size: 12px;
+
+  background: #03a9f4;
+}
+
+.update-todo:hover, .update-todo:focus {
+  background: #29b6f6;
+}
+
 .remove-todo {
   font-size: 12px;
-  float: right;
+
   background: #f44336;
 }
 

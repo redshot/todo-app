@@ -68,16 +68,19 @@
             let liTodo = createNode("li");
             liTodo.setAttribute("id", `todo-${data._id}`);
             liTodo.classList.add("collection-item");
-            liTodo.innerHTML = `${data.title} <button id="${data._id}" onclick="deleteTodo(this);" class="btn-small remove-todo">Delete</button>`;
+            liTodo.innerHTML = `<input class="inner-title" value="${data.title}" onchange="updateTodo(this)" onblur="resetTodoInput(this)" readonly><div class="inner-buttons">
+                <button id="${data._id}" onclick="editableTitle(this);" class="btn-small update-todo">Update</button>
+                <button id="${data._id}" onclick="deleteTodo(this);" class="btn-small remove-todo">Delete</button>
+              </div><input class="todo-id" type="hidden" value="${data._id}">`;
             prepend(ulTodos, liTodo);
           })
           .catch((error) => {
             console.log(error);
           });
         }
-
       }
 
+      // Get All Todos
       fetch("api/todos")
       .then((resp) => resp.json())
       .then((data) => {
@@ -86,7 +89,10 @@
           let liTodo = createNode("li");
           liTodo.setAttribute("id", `todo-${todo._id}`);
           liTodo.classList.add("collection-item");
-          liTodo.innerHTML = `${todo.title} <button id="${todo._id}" onclick="deleteTodo(this);" class="btn-small remove-todo">Delete</button>`;
+          liTodo.innerHTML = `<input class="inner-title" value="${todo.title}" onchange="updateTodo(this)" onblur="resetTodoInput(this)" readonly><div class="inner-buttons">
+              <button id="${todo._id}" onclick="editableTitle(this);" class="btn-small update-todo">Update</button>
+              <button id="${todo._id}" onclick="deleteTodo(this);" class="btn-small remove-todo">Delete</button>
+            </div><input class="todo-id" type="hidden" value="${todo._id}">`;
           append(ulTodos, liTodo);
         });
       })
@@ -106,9 +112,41 @@
 
     }); // end document
 
-    deleteTodo = (el) => {
-      let parentElement = el.parentElement;
+    editableTitle = (el) => {
+      let innerTitle = el.closest(".collection-item").children[0];
+      innerTitle.removeAttribute("readonly");
+      innerTitle.classList.add("edit");
+      innerTitle.focus();
+    }
 
+    updateTodo = (el) => {
+      let titleTodo = el.value;
+      let idTodo = el.closest(".collection-item").children[2].value;
+      let parentElement = el.closest(".collection-item");
+
+      parentElement.classList.add("disable");
+
+      fetch("/api/todos/" + idTodo, {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({"title": titleTodo})
+      })
+      .then((resp) => resp.json())
+      .then((data) => {
+        parentElement.classList.remove("disable");
+      })
+      .catch((error) => console.log(error));
+    }
+
+    resetTodoInput = (el) => {
+      el.setAttribute("readonly", "true");
+      el.classList.remove("edit");
+    }
+
+    deleteTodo = (el) => {
+      let parentElement = el.closest(".collection-item");
       parentElement.classList.add("disable");
 
       fetch("api/todos/" + el.id, {
