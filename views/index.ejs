@@ -66,8 +66,9 @@
 
             // Update collection
             let liTodo = createNode("li");
-            liTodo.innerHTML = `${data.title} <button class="btn-small remove-todo">Delete</button>`;
+            liTodo.setAttribute("id", `todo-${data._id}`);
             liTodo.classList.add("collection-item");
+            liTodo.innerHTML = `${data.title} <button id="${data._id}" onclick="deleteTodo(this);" class="btn-small remove-todo">Delete</button>`;
             prepend(ulTodos, liTodo);
           })
           .catch((error) => {
@@ -83,25 +84,43 @@
         let todos = data;
         return todos.map(todo => {
           let liTodo = createNode("li");
-          liTodo.innerHTML = `${todo.title} <button class="btn-small remove-todo">Delete</button>`;
+          liTodo.setAttribute("id", `todo-${todo._id}`);
           liTodo.classList.add("collection-item");
+          liTodo.innerHTML = `${todo.title} <button id="${todo._id}" onclick="deleteTodo(this);" class="btn-small remove-todo">Delete</button>`;
           append(ulTodos, liTodo);
         });
-      });
+      })
+      .catch((error) => console.log(error));
 
-      function createNode(element) {
+      createNode = (element) => {
         return document.createElement(element); // Create the type of element you pass in the parameters
       }
 
-      function append(parent, el) {
+      append = (parent, el) => {
   	    return parent.appendChild(el); // Append the second parameter(element) to the first one
   	  }
 
-      function prepend(parent, el) {
+      prepend = (parent, el) => {
         return parent.prepend(el); // Insert at the beginning of the parents
       }
 
     }); // end document
+
+    deleteTodo = (el) => {
+      let parentElement = el.parentElement;
+
+      parentElement.classList.add("disable");
+
+      fetch("api/todos/" + el.id, {
+        method: 'DELETE'
+      })
+      .then((resp) => resp.json())
+      .then((data) => {
+        parentElement.remove();
+      })
+      .catch((error) => console.log(error));
+    }
+
   </script>
 </body>
 </html>

@@ -93,6 +93,12 @@ body {
   line-height: 2.5rem;
 }
 
+#todos .collection-item.disable {
+  position: relative;
+  z-index: -1;
+  opacity: 0.5;
+}
+
 .remove-todo {
   font-size: 12px;
   float: right;
