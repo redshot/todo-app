@@ -40,20 +40,20 @@ const TodoSchema = new Schema({
 ## API
 
 - POST Routes
- - To add a todo send it to http://localhost:3000/api/todos
-   - For example:
-    ```
-    fetch("api/todos", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({"title": "Play the guitar"})
-    })
-    .then((resp) => resp.json())
-    .then((data) => {
-    })
-    .catch((error) => {
-    console.log(error);
-    });
-    ```
+  - To add a todo send it to http://localhost:3000/api/todos
+    - For example:
+      ```
+      fetch("api/todos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({"title": "Play the guitar"})
+      })
+      .then((resp) => resp.json())
+      .then((data) => {
+      })
+      .catch((error) => {
+      console.log(error);
+      });
+      ```
