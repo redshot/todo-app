@@ -72,6 +72,7 @@ const TodoSchema = new Schema({
       })
       .catch((error) => console.log(error));
       ```
+
 - GET Routes
   - To get all todos use `api/todos`
     - Example:
@@ -82,7 +83,7 @@ const TodoSchema = new Schema({
       })
       .catch((error) => console.log(error));
       ```
-
+      
 - DELETE routes
   - To delete a todo use `/api/todos:id`
     - Example:
