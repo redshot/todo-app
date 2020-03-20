@@ -12,5 +12,21 @@ The first step to checkout the app is to clone it from the github repository. If
 You need to install `npm packages` before running the app in your local machine.
 
 1. Navigate to `todo-app` directory then open a `terminal` on the current directory. Enter `npm install` to install npm packages
-2. After install packages, enter `nodemon server.js` to start the app and server.
+2. After installing the packages, enter `nodemon server.js` to start the app and server.
 3. Go to http://localhost:3000/ on your browser to view the app
+
+## Database Schema Model
+The schema is composed of the `title` and `date` fields. This schema is located in `models/Todo.js`
+
+```
+const TodoSchema = new Schema({
+  title: {
+    type: String,
+    required: true
+  },
+  date: {
+    type: Date,
+    default: Date.now
+  }
+});
+```
