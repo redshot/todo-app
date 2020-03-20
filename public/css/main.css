@@ -15,6 +15,7 @@ body {
 .todo-form-wrapper {
   margin: 0 auto 30px;
   max-width: 614px;
+  width: 100%;
 }
 
 #todo-form.disable {
@@ -35,6 +36,7 @@ body {
   line-height: 56px;
   max-width: 417px;
   float: left;
+  box-sizing: inherit;
 }
 
 #todo-title::-webkit-input-placeholder { /* Edge */
@@ -140,10 +142,40 @@ body {
 
 /* Mediq Query */
 @media screen and (max-width: 768px) {
+  .todo-form-wrapper {
+    max-width: none;
+  }
+
+  #todo-title {
+    float: none;
+  }
+
   #todo-submit {
     margin: 12px auto 0;
     display: block;
-    max-width: 459px;
+    max-width: 417px;
     width: 100%;
+    float:none;
+  }
+
+  #todos .collection-item {
+    height: 100px;
+  }
+
+  #todos .collection-item .inner-title {
+    width: 100%;
+  }
+
+  .inner-buttons {
+    float: none;
+    width: 100%;
+    text-align: right;
+  }
+
+}
+
+@media screen and (max-width: 480px) {
+  #todo-title, #todo-submit{
+    max-width: none;
   }
 }
