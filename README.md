@@ -74,7 +74,7 @@ const TodoSchema = new Schema({
       ```
 - GET Routes
   - To get all todos use `api/todos`
-    Example:
+    - Example:
     ```
     fetch("api/todos")
     .then((resp) => resp.json())
@@ -85,7 +85,7 @@ const TodoSchema = new Schema({
 
 - DELETE routes
   - To delete a todo use `/api/todos:id`
-    Example:
+    - Example:
     ```
     fetch("api/todos/" + id, {
       method: 'DELETE'
