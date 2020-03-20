@@ -15,6 +15,12 @@ You need to install `npm packages` before running the app in your local machine.
 2. After installing the packages, enter `nodemon server.js` to start the app and server.
 3. Go to http://localhost:3000/ on your browser to view the app
 
+## Application Structure
+- `server.js` - This is the entry point of the application. Express configuration and MongoDB connection is defined in this file.
+- `config/keys.js` - This files contains the username and password for the database.
+- `routes` - This folder contains the `API` routes of the app.
+- `models` - This folder contains the schema of the app.
+
 ## Database Schema Model
 The schema is composed of the `title` and `date` fields. This schema is located in `models/Todo.js`
 
