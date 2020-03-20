@@ -40,8 +40,8 @@ const TodoSchema = new Schema({
 ## API
 
 - POST Routes
-  - To add a todo send it to http://localhost:3000/api/todos
-    - For example:
+  - To add a todo use `api/todos`
+    - Example:
       ```
       fetch("api/todos", {
       method: "POST",
@@ -57,3 +57,41 @@ const TodoSchema = new Schema({
       console.log(error);
       });
       ```
+  - To update a todo use `/api/todos:id`
+    - Example:
+      ```
+      fetch("/api/todos/" + id, {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({"title": "Buy new guitar"})
+      })
+      .then((resp) => resp.json())
+      .then((data) => {
+      })
+      .catch((error) => console.log(error));
+      ```
+- GET Routes
+  - To get all todos use `api/todos`
+    Example:
+    ```
+    fetch("api/todos")
+    .then((resp) => resp.json())
+    .then((data) => {
+    })
+    .catch((error) => console.log(error));
+    ```
+
+- DELETE routes
+  - To delete a todo use `/api/todos:id`
+    Example:
+    ```
+    fetch("api/todos/" + id, {
+      method: 'DELETE'
+    })
+    .then((resp) => resp.json())
+    .then((data) => {
+    })
+    .catch((error) => console.log(error));
+    ```  
