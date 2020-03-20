@@ -75,23 +75,23 @@ const TodoSchema = new Schema({
 - GET Routes
   - To get all todos use `api/todos`
     - Example:
-    ```
-    fetch("api/todos")
-    .then((resp) => resp.json())
-    .then((data) => {
-    })
-    .catch((error) => console.log(error));
-    ```
+      ```
+      fetch("api/todos")
+      .then((resp) => resp.json())
+      .then((data) => {
+      })
+      .catch((error) => console.log(error));
+      ```
 
 - DELETE routes
   - To delete a todo use `/api/todos:id`
     - Example:
-    ```
-    fetch("api/todos/" + id, {
-      method: 'DELETE'
-    })
-    .then((resp) => resp.json())
-    .then((data) => {
-    })
-    .catch((error) => console.log(error));
-    ```  
+      ```
+      fetch("api/todos/" + id, {
+        method: 'DELETE'
+      })
+      .then((resp) => resp.json())
+      .then((data) => {
+      })
+      .catch((error) => console.log(error));
+      ```  
